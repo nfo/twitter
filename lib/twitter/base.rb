@@ -15,6 +15,11 @@ module Twitter
       perform_get('/statuses/friends_timeline.json', :query => query)
     end
     
+    # Options: since_id, max_id, count, page, since
+    def mentions(query={})
+      perform_get('/statuses/mentions.json', :query => query)
+    end
+    
     # Options: id, user_id, screen_name, since_id, max_id, page, since
     def user_timeline(query={})
       perform_get('/statuses/user_timeline.json', :query => query)

@@ -39,6 +39,18 @@ class BaseTest < Test::Unit::TestCase
         first.favorited.should be(false)
       end
       
+      should "be able to get mentions" do
+        stub_get('/statuses/mentions.json', 'mentions.json')
+        timeline = @twitter.mentions
+        timeline.size.should == 20
+        first = timeline.first
+        first.source.should == '<a href="http://twitterrific.com" rel="nofollow">Twitterrific</a>'
+        first.user.name.should == 'Alexandre F'
+        first.user.url.should be_nil
+        first.id.should == 3298262678
+        first.favorited.should be(false)
+      end
+      
       should "be able to get user timeline" do
         stub_get('/statuses/user_timeline.json', 'user_timeline.json')
         timeline = @twitter.user_timeline

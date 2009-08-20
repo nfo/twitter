@@ -12,6 +12,9 @@ client = Twitter::Base.new(oauth)
 pp client.friends_timeline
 puts '*'*50
 
+pp client.mentions
+puts '*'*50
+
 pp client.user_timeline
 puts '*'*50
 
